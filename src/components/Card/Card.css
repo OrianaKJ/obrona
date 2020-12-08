@@ -1,0 +1,30 @@
+.card-container {
+    border-radius: 25px;
+    background-color: #fff;
+}
+
+.poster {
+    border-radius: 25px 25px 0 0;
+}
+
+.movie-overview {
+    padding: 1rem;
+}
+
+.watched, .toWatch {
+    width: 150px;
+    box-shadow: 0 6px #8f033d;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-weight: 700;
+    border-radius: 40px;
+    background-color: #ff076e;
+    color: #fff;
+    margin: 0.5rem;
+    padding: 1rem;
+}
+
+.watched:hover, .toWatch:hover {
+    transform: scale(1.03);
+}
