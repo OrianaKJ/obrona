@@ -1,0 +1,14 @@
+.signin {
+    padding: 2rem;
+    background-color:transparent;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+
+}
+
+form {
+    padding: 1rem 0;
+}
+
+.elements {
+    padding: 1rem 0;
+}

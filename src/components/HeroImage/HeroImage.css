@@ -3,4 +3,5 @@
     background-position: center center;
     background-size: 100% cover;
     margin: -5px;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
 }

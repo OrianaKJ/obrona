@@ -1,6 +1,7 @@
 import React from 'react';
 import './Card.css'
 export const Card = (props) => (
+ 
     <div>
     {
           <React.Fragment>
@@ -15,7 +16,7 @@ export const Card = (props) => (
                 <br></br>
               </div>
               <div className="buttons">
-                    <button className="watched">Oglągnięte</button>
+                    <button className="watched" onClick="this.handleClick">Oglągnięte</button>
                     <button className="toWatch">Do oglądnięcia</button>
               </div>
           </div>
@@ -24,3 +25,4 @@ export const Card = (props) => (
     }  
     </div>
 )
+

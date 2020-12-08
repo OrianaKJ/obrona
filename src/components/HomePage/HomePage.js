@@ -30,7 +30,7 @@ class HomePage extends Component {
       const filteredMovies = movies.filter(movie => movie.name.toLowerCase().includes(searchField))
      
       return (
-        <div className="App">
+        <div className="app">
         <HeroImage />
         <SearchBox 
           placeholder="Wyszukaj film"

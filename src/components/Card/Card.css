@@ -1,6 +1,7 @@
 .card-container {
     border-radius: 25px;
     background-color: #fff;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
 }
 
 .poster {
@@ -13,7 +14,7 @@
 
 .watched, .toWatch {
     width: 150px;
-    box-shadow: 0 6px #8f033d;
+    box-shadow:0 15px 25px  #8f033d;
     border: none;
     cursor: pointer;
     letter-spacing: 1px;
@@ -23,6 +24,10 @@
     color: #fff;
     margin: 0.5rem;
     padding: 1rem;
+}
+
+button:focus{
+    outline: none;
 }
 
 .watched:hover, .toWatch:hover {

@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* background-color: #000; */
+
 }
 
 .header-image {
@@ -11,17 +11,12 @@
     width: 80px;
 }
 
-/* .header-title {
-    color: #fff;
-} */
-
 .header-link{
     text-decoration: none;
 }
 
 .login-link {
     padding: 20px;
-    /* color: #fff; */
 }
 
 a {

@@ -1,9 +1,15 @@
 .search {
     background-color: #000;
+    text-align: center;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
 }
 .input {
     margin: 2rem;
     padding: 1rem;
     border-radius: 25px;
     border-color: transparent;
+}
+
+textarea:focus, input:focus{
+    outline: none;
 }
