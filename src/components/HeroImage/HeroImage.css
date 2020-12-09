@@ -5,3 +5,14 @@
     margin: -5px;
     box-shadow: 0 15px 25px rgba(0,0,0,.6);
 }
+
+.text-msg {
+    height: 100px;
+    background-color: white;
+    opacity: 0.7;
+    position: absolute;
+    bottom: 35%;
+    right: 5%;
+    padding: 1rem;
+    font-weight: 700;
+}

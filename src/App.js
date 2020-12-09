@@ -13,8 +13,8 @@ function App () {
     <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/user" component={UserPanel} />
-        <Route exact path="/signin" component={SignIn} />
+        <Route path="/user" component={UserPanel} />
+        <Route path="/signin" component={SignIn} />
       </Switch>
     </div>
   )

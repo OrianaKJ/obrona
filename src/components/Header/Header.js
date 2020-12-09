@@ -10,8 +10,8 @@ export const Header = () => (
         <Link className="header-link" to='/'>
             <h1 className="header-title">Premium Cinema - the best movies in one place</h1>
         </Link>
-        <Link className="login">
-            <p className="login-link" to='/signin'>Zaloguj się</p>
+        <Link className="login" to='/signin'>
+            <p className="login-link" >Zaloguj się</p>
         </Link>
     </div>
 )
