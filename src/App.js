@@ -3,9 +3,9 @@ import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import { Header } from './components/Header/Header';
 import HomePage from './components/HomePage/HomePage';
-import SignIn from './components/SignIn/SignIn';
+import SignInAndUp from './components/SignInAndUp/SignInAndUp';
 import UserPanel from './components/UserPanel/UserPanel';
-import { auth } from './firebase/firebase.utils';
+import { auth,createUserProfileDocument } from './firebase/firebase.utils';
 
 
 
@@ -20,10 +20,22 @@ class App extends Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-   this.unsubscribeFromAuth =  auth.onAuthStateChanged(user => {
-      this.setState({currentUser: user});
-      console.log(user)
-    })
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+
+        userRef.onSnapshot(snapShot => {
+          this.setState({
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data()
+            }
+          });
+        });
+      } else{
+        this.setState({ currentUser: userAuth });
+      }
+    });
   }
 
   componentWillUnmount() {
@@ -38,7 +50,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/user" component={UserPanel} />
-            <Route path="/signin" component={SignIn} />
+            <Route path="/signin" component={SignInAndUp} />
           </Switch>
         </div>
       )

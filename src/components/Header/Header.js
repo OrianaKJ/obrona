@@ -11,6 +11,7 @@ export const Header = ({currentUser}) => (
         <Link className="header-link" to='/'>
             <h1 className="header-title">Premium Cinema - the best movies in one place</h1>
         </Link>
+        <Link className="header-link" to='/user'>Moje konto</Link>
         {currentUser ? (
             <div className="login-link" onClick={() => auth.signOut()}>Wyloguj się</div>
           ) : (<Link className="login-link" to='/signin'>Zaloguj się</Link>)}     

@@ -1,0 +1,17 @@
+.signInUp {
+    padding: 2rem;
+    width: 900px;
+    margin: 20px auto;
+    background-color:transparent;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    display: flex;
+    justify-content: space-between;
+}
+
+form {
+    padding: 1rem 0;
+}
+
+.elements {
+    padding: 1rem 0;
+}
