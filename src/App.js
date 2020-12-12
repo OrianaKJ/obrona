@@ -48,8 +48,6 @@ class App extends Component {
         
         <Header currentUser={this.state.currentUser}/>
           <Switch>
-            {console.log('App.js')}
-            {console.log(this.state.currentUser)}
             <Route exact path="/" render={(props) => <HomePage currentUser={this.state.currentUser} {...props} /> } />
             <Route path="/user" component={UserPanel} />
             <Route 

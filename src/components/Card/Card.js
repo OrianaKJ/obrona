@@ -1,27 +1,16 @@
 import React from 'react';
 import './Card.css'
 import Button from '../Button/Button'
-import { Redirect, withRouter } from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
+import { addMovieToWatch } from '../../firebase/firebase.utils';
 
 class Card extends React.Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      currentUser: this.props.currentUser,
-      movie: this.props.movie,
-      key: this.props.key,
-    }
-    
-    console.log('Card.js constructor');
-    console.log(this.props.currentUser);
-    console.log(this.props.movie);
-  }
-
- handleAddMovie(e) {
+ handleAddMovie(e, props) {
     e.preventDefault();
     e.stopPropagation();
-    console.log("test");
-    return <Redirect to="/signin" />
+    props.currentUser ?
+        addMovieToWatch(props.movieId, props.currentUser.id)
+      : props.history.push('/signin');
   }
 
   render(){
@@ -31,16 +20,16 @@ class Card extends React.Component{
             <React.Fragment>
               <div className="card-container">
                 <div className="poster-box">
-                  <img className="poster"  alt="" src={`https://image.tmdb.org/t/p/w342${this.state.movie.poster_path}`}></img>
+                  <img className="poster"  alt="" src={`https://image.tmdb.org/t/p/w342${this.props.movie.poster_path}`}></img>
                 </div>
                 <div className="movie-info">
-                  <h1>{this.state.movie.name}</h1>
-                  <p className="movie-overview">{this.state.movie.overview}</p>
-                  <p >Średnia ocena: {this.state.movie.vote_average}</p>
+                  <h1>{this.props.movie.name}</h1>
+                  <p className="movie-overview">{this.props.movie.overview}</p>
+                  <p >Średnia ocena: {this.props.movie.vote_average}</p>
                   <br></br>
                 </div>
                 <div className="buttons">
-                  <Button className="toWatch" onClick={this.handleAddMovie}>Do obejrzenia</Button>
+                  <Button className="toWatch" onClick={(e) => this.handleAddMovie(e, this.props)}>Do obejrzenia</Button>
                 </div>
             </div>
             </React.Fragment>

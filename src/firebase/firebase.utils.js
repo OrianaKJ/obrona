@@ -15,14 +15,27 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 
+export const addMovieToWatch = async (movieId, userId) => {
+  const docRef = firestore.doc(`users/${userId}`);
+
+  docRef.get().then(function(doc) {
+      let movies = doc.data().movies;
+      if (!movies) {
+          movies = [];
+      }
+      movies.push(movieId);
+      return docRef.update({movies: movies});
+  }).catch(function(error) {
+      console.log("Error getting document:", error);
+  });
+}
+
 export const createUserProfileDocument = async (userAuth, additionalData) => {
     if (!userAuth) return;
   
     const userRef = firestore.doc(`users/${userAuth.uid}`);
-  
     const snapShot = await userRef.get();
   
-    console.log(snapShot)
     if (!snapShot.exists) {
       const { displayName, email } = userAuth;
       const createdAt = new Date();

@@ -18,17 +18,14 @@ class HomePage extends Component {
         currentPage: 0,
         totalPages: 0,
       }
-      
-      console.log('HomePage.js constructor');
-      console.log(this.props.currentUser);
     }
   
     componentDidMount() {
-      console.log('HomePage.js dIdmount');
-      console.log(this.props.currentUser);
       fetch('https://api.themoviedb.org/3/tv/popular?api_key=284b6c29bdbbc5b45a7d60b8e41050e6&language=pl-PL&page=1')
       .then(response => response.json())
-      .then(data => this.setState({movies : data.results}))
+      .then(data => {
+        this.setState({movies : data.results});
+      })
     }
   
   
@@ -91,15 +88,13 @@ class HomePage extends Component {
       const { movies, searchField, currentPage, loading , totalPages} = this.state;
       const filteredMovies = movies.filter(movie => movie.name.toLowerCase().includes(searchField))
       
-      console.log("HomePage RENDER");
-      console.log(this.props.currentUser);
       return (
         <div className="app">
         <HeroImage />
         <SearchBox 
           callback={this.searchItems}
         />
-        <CardList currentUser={this.props.currentUser} movies={filteredMovies}/>
+        <CardList currentUser={this.props.currentUser} movies={filteredMovies} />
         {loading ? <Spinner /> : null}
         {(currentPage <= totalPages && !loading) ? <LoadMoreBtn text="Pokaż następne" onClick={this.loadMoreItems}/>  
         : null
