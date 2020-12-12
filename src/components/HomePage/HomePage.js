@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {CardList} from '../CardList/CardList';
+import CardList from '../CardList/CardList';
 import SearchBox from '../SearchBox/SearchBox';
 import {HeroImage} from '../HeroImage/HeroImage';
 import { Footer } from '../Footer/Footer'
