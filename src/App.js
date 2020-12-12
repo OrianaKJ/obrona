@@ -13,8 +13,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      currentUser: null,
-      componentDidMount: false,
+      currentUser: null
     }
   }
 
@@ -22,7 +21,6 @@ class App extends Component {
 
   componentDidMount() {
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-      this.setState({componentDidMount: true});
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
 
@@ -45,17 +43,14 @@ class App extends Component {
   }
 
   render() {
-    console.log("componentDidMount " + this.state.componentDidMount);
-    if (!this.state.componentDidMount) {
-      return null;
-    }
     return (
         <div>
         
         <Header currentUser={this.state.currentUser}/>
           <Switch>
             {console.log('App.js')}
-            <Route exact path="/" component={HomePage}  currentUser={this.state.currentUser} />
+            {console.log(this.state.currentUser)}
+            <Route exact path="/" render={(props) => <HomePage currentUser={this.state.currentUser} {...props} /> } />
             <Route path="/user" component={UserPanel} />
             <Route 
               exact

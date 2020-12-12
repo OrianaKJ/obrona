@@ -6,7 +6,7 @@ export const Card = (props) => {
  function addMovie(e) {
     e.preventDefault();
     e.stopPropagation();
-      this.state.currentUser ? (
+      props.currentUser ? (
         alert("Zalogowany")
       ) : (
         alert("Niezalogowany")
