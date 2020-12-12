@@ -1,5 +1,5 @@
 import React, {Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
 import { Header } from './components/Header/Header';
 import HomePage from './components/HomePage/HomePage';
@@ -13,7 +13,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      currentUser: null
+      currentUser: null,
+      componentDidMount: false,
     }
   }
 
@@ -21,6 +22,7 @@ class App extends Component {
 
   componentDidMount() {
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      this.setState({componentDidMount: true});
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
 
@@ -43,14 +45,29 @@ class App extends Component {
   }
 
   render() {
+    console.log("componentDidMount " + this.state.componentDidMount);
+    if (!this.state.componentDidMount) {
+      return null;
+    }
     return (
         <div>
         
         <Header currentUser={this.state.currentUser}/>
           <Switch>
-            <Route exact path="/" component={HomePage} />
+            {console.log('App.js')}
+            <Route exact path="/" component={HomePage}  currentUser={this.state.currentUser} />
             <Route path="/user" component={UserPanel} />
-            <Route path="/signin" component={SignInAndUp} />
+            <Route 
+              exact
+              path='/signin'
+              render={() =>
+                this.state.currentUser ? (
+                    <Redirect to='/' />
+                ) : (
+                    <SignInAndUp />
+                )
+              }
+            />
           </Switch>
         </div>
       )

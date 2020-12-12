@@ -2,7 +2,7 @@ import React from 'react';
 
 const UserPanel = () =>(
     <div>
-        User panel
+        <h1>Do obejrzenia</h1>
     </div>
 )
  

@@ -1,7 +1,20 @@
 import React from 'react';
 import './Card.css'
-export const Card = (props) => (
- 
+import Button from '../Button/Button'
+
+export const Card = (props) => {
+ function addMovie(e) {
+    e.preventDefault();
+    e.stopPropagation();
+      this.state.currentUser ? (
+        alert("Zalogowany")
+      ) : (
+        alert("Niezalogowany")
+      )
+    console.log(props.movie.id, props.movie.name, props.movie.vote_average)
+  }
+
+  return(
     <div>
     {
           <React.Fragment>
@@ -16,8 +29,7 @@ export const Card = (props) => (
                 <br></br>
               </div>
               <div className="buttons">
-                    <button className="watched" onClick="this.handleClick">Oglągnięte</button>
-                    <button className="toWatch">Do oglądnięcia</button>
+                <Button className="toWatch" onClick={e => addMovie(e)}>Do obejrzenia</Button>
               </div>
           </div>
           </React.Fragment>
@@ -25,4 +37,4 @@ export const Card = (props) => (
     }  
     </div>
 )
-
+}

@@ -7,15 +7,20 @@ import Spinner from '../Spinner/Spinner';
 import LoadMoreBtn from '../LoadMore/LoadMore';
 
 class HomePage extends Component {
-   state = {
+
+    constructor(props){
+      super(props);
+      this.state = {
+        currentUser: this.props.currentUser,
         movies: [],
         searchField: '',
         loading: false,
         currentPage: 0,
-        totalPages: 0
+        totalPages: 0,
       }
-  
-    
+      
+      console.log('HomePage.js render');
+    }
   
     componentDidMount() {
       fetch('https://api.themoviedb.org/3/tv/popular?api_key=284b6c29bdbbc5b45a7d60b8e41050e6&language=pl-PL&page=1')
@@ -82,7 +87,7 @@ class HomePage extends Component {
     render() {
       const { movies, searchField, currentPage, loading , totalPages} = this.state; 
       const filteredMovies = movies.filter(movie => movie.name.toLowerCase().includes(searchField))
-     
+      
       return (
         <div className="app">
         <HeroImage />
