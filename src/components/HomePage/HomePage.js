@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import CardList from '../CardList/CardList';
 import SearchBox from '../SearchBox/SearchBox';
 import {HeroImage} from '../HeroImage/HeroImage';
@@ -6,7 +6,7 @@ import { Footer } from '../Footer/Footer'
 import Spinner from '../Spinner/Spinner';
 import LoadMoreBtn from '../LoadMore/LoadMore';
 
-class HomePage extends Component {
+class HomePage extends React.Component {
 
     constructor(props){
       super(props);

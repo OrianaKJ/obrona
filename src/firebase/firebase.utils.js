@@ -14,6 +14,12 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+export const getMoviesToWatch = async (userId) => {
+  const userRef = firestore.doc(`users/${userId}`);
+  const snapShot = await userRef.get();
+  const moviesIds = await snapShot.data().movies;
+  return moviesIds;
+}
 
 export const addMovieToWatch = async (movieId, userId) => {
   const docRef = firestore.doc(`users/${userId}`);
@@ -23,7 +29,10 @@ export const addMovieToWatch = async (movieId, userId) => {
       if (!movies) {
           movies = [];
       }
-      movies.push(movieId);
+      if (!movies.includes(movieId) ) {
+        movies.push(movieId)
+      }
+
       return docRef.update({movies: movies});
   }).catch(function(error) {
       console.log("Error getting document:", error);
@@ -39,11 +48,13 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     if (!snapShot.exists) {
       const { displayName, email } = userAuth;
       const createdAt = new Date();
+      const movies = [];
       try {
         await userRef.set({
           displayName,
           email,
           createdAt,
+          movies,
           ...additionalData
         });
       } catch (error) {

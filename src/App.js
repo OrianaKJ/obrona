@@ -45,11 +45,10 @@ class App extends Component {
   render() {
     return (
         <div>
-        
-        <Header currentUser={this.state.currentUser}/>
+          <Header currentUser={this.state.currentUser}/>
           <Switch>
             <Route exact path="/" render={(props) => <HomePage currentUser={this.state.currentUser} {...props} /> } />
-            <Route path="/user" component={UserPanel} />
+            <Route exact path="/user" render={(props) => <UserPanel currentUser={this.state.currentUser} {...props} /> } />
             <Route 
               exact
               path='/signin'
