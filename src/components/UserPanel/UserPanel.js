@@ -1,7 +1,7 @@
 import React from 'react';
 import { getMoviesToWatch } from '../../firebase/firebase.utils';
 import CardList from '../CardList/CardList';
-
+import './UserPanel.css'
 class UserPanel extends React.Component {
     state = {moviesToWatch: null};
 
@@ -40,7 +40,10 @@ class UserPanel extends React.Component {
         return(
             this.state.moviesToWatch
             ? <CardList currentUser={this.props.currentUser} movies={ this.state.moviesToWatch } />
-            : <div>Na głównej stronie możesz przejrzeć filmy i wybrać, które chcesz dodać do listy do obejrzenia</div>
+            : <div className="info">
+                <p>Na głównej stronie możesz przejrzeć filmy i wybrać, które chcesz dodać do listy do obejrzenia.</p> 
+                <p>Jeśli chcesz skorzystać z tej funkcjonalności zajoguj się do swojego konta lub utwórz swoje konto w serwisie.</p>
+            </div>
         );
     }
 }

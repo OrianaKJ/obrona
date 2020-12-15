@@ -3,6 +3,6 @@ import './Footer.css';
 
 export const Footer = () => (
     <div>
-        <p className="footer-msg">Thank you for searching films with us. See you next time!</p>
+        <p className="footer-msg">Dziękuję za skorzystanie z mojej wyszuiwarki!</p>
     </div>
 )
