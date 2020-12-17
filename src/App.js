@@ -5,15 +5,14 @@ import { Header } from './components/Header/Header';
 import HomePage from './components/HomePage/HomePage';
 import SignInAndUp from './components/SignInAndUp/SignInAndUp';
 import UserPanel from './components/UserPanel/UserPanel';
-import { auth,createUserProfileDocument } from './firebase/firebase.utils';
-
-
+import { auth,createUserProfileDocument,getMoviesToWatch } from './firebase/firebase.utils';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      currentUser: null
+      currentUser: null,
+      watchedMoviesIds:[]
     }
   }
 
@@ -31,6 +30,10 @@ class App extends Component {
               ...snapShot.data()
             }
           });
+          if (this.state.currentUser) {
+            getMoviesToWatch(this.state.currentUser.id)
+              .then((moviesIds) => this.setState({watchedMoviesIds: moviesIds}));
+          }
         });
       } else{
         this.setState({ currentUser: userAuth });
@@ -43,11 +46,12 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.watchedMoviesIds)
     return (
         <div>
           <Header currentUser={this.state.currentUser}/>
           <Switch>
-            <Route exact path="/" render={(props) => <HomePage currentUser={this.state.currentUser} {...props} /> } />
+            <Route exact path="/" render={(props) => <HomePage currentUser={this.state.currentUser} {...props} watchedMoviesIds={this.state.watchedMoviesIds} /> } />
             <Route exact path="/user" render={(props) =>
               this.state.currentUser
                 ? <UserPanel currentUser={this.state.currentUser} {...props} />

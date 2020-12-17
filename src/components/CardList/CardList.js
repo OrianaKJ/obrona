@@ -11,7 +11,9 @@ class CardList extends React.Component{
                 {this.props.movies.map(movie => {
                     return !movie.poster_path || !movie.name||  !movie.overview  || !movie.vote_average
                         ? null
-                        : <Card  key={movie.id} movieId={movie.id} movie={movie} currentUser={this.props.currentUser} addToWatchButtonVisible={this.props.addToWatchButtonVisible}/>
+                        : <Card  key={movie.id} movieId={movie.id} movie={movie}
+                                currentUser={this.props.currentUser} addToWatchButtonVisible={this.props.addToWatchButtonVisible}
+                                watchedMoviesIds={this.props.watchedMoviesIds} />
                 })}
             </div>
         )

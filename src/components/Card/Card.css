@@ -26,6 +26,19 @@
     padding: 1rem;
 }
 
+.alreadyWatched {
+    width: 150px;
+    box-shadow:0 15px 25px  #013308;
+    border: none;
+    letter-spacing: 1px;
+    font-weight: 700;
+    border-radius: 40px;
+    background-color: #058016;
+    color: #fff;
+    margin: 0.5rem;
+    padding: 1rem;
+}
+
 button:focus{
     outline: none;
 }

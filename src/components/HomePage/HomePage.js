@@ -84,7 +84,7 @@ class HomePage extends React.Component {
         <SearchBox 
           callback={this.searchItems}
         />
-        <CardList currentUser={this.props.currentUser} movies={filteredMovies} addToWatchButtonVisible={true} />
+        <CardList currentUser={this.props.currentUser} movies={filteredMovies} addToWatchButtonVisible={true} watchedMoviesIds={this.props.watchedMoviesIds} />
         {loading ? <Spinner /> : null}
         {(currentPage <= totalPages && !loading) ? <LoadMoreBtn text="Pokaż następne" onClick={this.loadMoreItems}/>  
         : null

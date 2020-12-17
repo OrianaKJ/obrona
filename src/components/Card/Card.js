@@ -29,7 +29,9 @@ class Card extends React.Component{
           </div>
           {
             this.props.addToWatchButtonVisible === true
-            ? <Button className="toWatch" onClick={(e) => this.handleAddMovie(e, this.props)}>Do obejrzenia</Button>
+            ? this.props.watchedMoviesIds && this.props.watchedMoviesIds.includes(this.props.movieId)
+              ? <Button className="alreadyWatched" disabled>Dodany do listy</Button>
+              : <Button className="toWatch" onClick={(e) => this.handleAddMovie(e, this.props)}>Do obejrzenia</Button>
             : null
           }
          </div>
