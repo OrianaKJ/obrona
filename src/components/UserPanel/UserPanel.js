@@ -39,10 +39,10 @@ class UserPanel extends React.Component {
         console.log(this.props.currentUser);
         return(
             this.state.moviesToWatch
-            ? <CardList currentUser={this.props.currentUser} movies={ this.state.moviesToWatch } />
+            ? <CardList currentUser={this.props.currentUser} movies={ this.state.moviesToWatch }  addToWatchButtonVisible={false} />
             : <div className="info">
                 <p>Na głównej stronie możesz przejrzeć filmy i wybrać, które chcesz dodać do listy do obejrzenia.</p> 
-                <p>Jeśli chcesz skorzystać z tej funkcjonalności zajoguj się do swojego konta lub utwórz swoje konto w serwisie.</p>
+                <p>Jeśli chcesz skorzystać z tej funkcjonalności zaloguj się do swojego konta lub utwórz swoje konto w serwisie.</p>
             </div>
         );
     }

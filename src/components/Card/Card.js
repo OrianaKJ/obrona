@@ -27,7 +27,11 @@ class Card extends React.Component{
             <p >Średnia ocena: {this.props.movie.vote_average}</p>
             <br></br>
           </div>
-          <Button className="toWatch" onClick={(e) => this.handleAddMovie(e, this.props)}>Do obejrzenia</Button>
+          {
+            this.props.addToWatchButtonVisible === true
+            ? <Button className="toWatch" onClick={(e) => this.handleAddMovie(e, this.props)}>Do obejrzenia</Button>
+            : null
+          }
          </div>
       }  
       </div>
