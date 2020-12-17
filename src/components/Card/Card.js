@@ -17,23 +17,18 @@ class Card extends React.Component{
     return(
       <div>
       {
-            <React.Fragment>
-              <div className="card-container">
-                <div className="poster-box">
-                  <img className="poster"  alt="" src={`https://image.tmdb.org/t/p/w342${this.props.movie.poster_path}`}></img>
-                </div>
-                <div className="movie-info">
-                  <h1>{this.props.movie.name}</h1>
-                  <p className="movie-overview">{this.props.movie.overview}</p>
-                  <p >Średnia ocena: {this.props.movie.vote_average}</p>
-                  <br></br>
-                </div>
-                <div className="buttons">
-                  <Button className="toWatch" onClick={(e) => this.handleAddMovie(e, this.props)}>Do obejrzenia</Button>
-                </div>
-            </div>
-            </React.Fragment>
-          
+        <div className="card-container">
+          <div className="poster-box">
+            <img className="poster"  alt="" src={`https://image.tmdb.org/t/p/w342${this.props.movie.poster_path}`}></img>
+          </div>
+          <div className="movie-info">
+            <h1>{this.props.movie.name}</h1>
+            <p className="movie-overview">{this.props.movie.overview}</p>
+            <p >Średnia ocena: {this.props.movie.vote_average}</p>
+            <br></br>
+          </div>
+          <Button className="toWatch" onClick={(e) => this.handleAddMovie(e, this.props)}>Do obejrzenia</Button>
+         </div>
       }  
       </div>
   )}

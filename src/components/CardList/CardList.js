@@ -6,8 +6,6 @@ import './CardList.css';
 
 class CardList extends React.Component{
     render(){
-        console.log("CardList RENDER")
-        console.log(this.props.movies.length);
         return(
             <div className="card-list">
                 {this.props.movies.map(movie => {

@@ -12,7 +12,7 @@
     font-weight: 500;
     border: none;
     cursor: pointer;
-    margin-right: 10px
+    margin: 10px 10px 0 0;
 }
 
 .custom-btn:hover {

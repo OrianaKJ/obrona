@@ -4,7 +4,7 @@ import './Button.css';
 const Button = ({ children, isGoogleSignIn, ...otherProps }) => {
     return (<button
       className={`${isGoogleSignIn ? "google-btn custom-btn" : "custom-btn"} custom-button`}
-      {...otherProps}
+      {...otherProps} 
     >
       {children}
     </button>
