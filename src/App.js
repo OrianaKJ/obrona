@@ -51,7 +51,7 @@ class App extends Component {
             <Route exact path="/user" render={(props) =>
               this.state.currentUser
                 ? <UserPanel currentUser={this.state.currentUser} {...props} />
-                : props.history.push('/signin')
+                : <SignInAndUp />
             } />
             <Route 
               exact
