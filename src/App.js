@@ -48,7 +48,11 @@ class App extends Component {
           <Header currentUser={this.state.currentUser}/>
           <Switch>
             <Route exact path="/" render={(props) => <HomePage currentUser={this.state.currentUser} {...props} /> } />
-            <Route exact path="/user" render={(props) => <UserPanel currentUser={this.state.currentUser} {...props} /> } />
+            <Route exact path="/user" render={(props) =>
+              this.state.currentUser
+                ? <UserPanel currentUser={this.state.currentUser} {...props} />
+                : props.history.push('/signin')
+            } />
             <Route 
               exact
               path='/signin'
