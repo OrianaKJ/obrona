@@ -27,16 +27,12 @@ class UserPanel extends React.Component {
 
     async componentDidMount() {
         if (this.props.currentUser) {
-            console.log('test');
             const moviesIds = await getMoviesToWatch(this.props.currentUser.id);
             await this.loadMovies(moviesIds);
         }
     }
 
     render() {
-        console.log("UserPanel RENDER");
-        console.log(this.state.moviesToWatch);
-        console.log(this.props.currentUser);
         return(
             this.state.moviesToWatch
             ? <CardList currentUser={this.props.currentUser} movies={ this.state.moviesToWatch }  addToWatchButtonVisible={false} />

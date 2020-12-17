@@ -15,23 +15,13 @@ class HomePage extends React.Component {
         movies: [],
         searchField: '',
         loading: false,
-        currentPage: 0,
+        currentPage: 1,
         totalPages: 0,
       }
     }
   
-    componentDidMount() {
-      fetch('https://api.themoviedb.org/3/tv/popular?api_key=284b6c29bdbbc5b45a7d60b8e41050e6&language=pl-PL&page=1')
-      .then(response => response.json())
-      .then(data => {
-        this.setState({movies : data.results});
-      })
-    }
+    componentDidMount = () => { this.fetchItems('https://api.themoviedb.org/3/tv/popular?api_key=284b6c29bdbbc5b45a7d60b8e41050e6&language=pl-PL&page=1'); }
   
-  
-    // handleChange = (e) => {
-    //   this.setState({searchField: e.target.value.toLowerCase()})
-    // }
     searchItems = (searchField) => {
       let endpoint = '';
       this.setState({
@@ -87,7 +77,7 @@ class HomePage extends React.Component {
     render() {
       const { movies, searchField, currentPage, loading , totalPages} = this.state;
       const filteredMovies = movies.filter(movie => movie.name.toLowerCase().includes(searchField))
-      
+
       return (
         <div className="app">
         <HeroImage />
